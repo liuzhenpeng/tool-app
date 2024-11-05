@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration monitorInterval="30">
+    <appenders>
+        <console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="[%d{yyyy-MM-dd HH:mm:ss.SSS}] %level [%thread] [traceId:%X{traceId}] [%X{PtxId}, %X{PspanId}] - %l - %m%n"/>
+        </console>
+    </appenders>
+    <!--然后定义logger，只有定义了logger并引入的appender，appender才会生效-->
+    <loggers>
+        <!--过滤掉spring和hibernate的一些无用的debug信息-->
+        <logger name="org.springframework" level="INFO"></logger>
+        <logger name="info" level="OFF"></logger>
+        <root level="INFO">
+            <appender-ref ref="Console"/>
+        </root>
+
+    </loggers>
+</configuration>
